@@ -1,3 +1,4 @@
+import { MantineProvider } from '@mantine/core';
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -8,6 +9,8 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <App />
+    <MantineProvider theme={{ fontFamily: 'Pally' }}>
+      <App />
+    </MantineProvider>
   </StrictMode>
 );
