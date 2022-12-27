@@ -1,6 +1,76 @@
 @import url('https://api.fontshare.com/v2/css?f[]=pally@400,700,500&display=swap');
 
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 h1,
 p {
-  font-family: 'Pally', sans-serif !important;
+    font-family: 'Pally', sans-serif;
+}
+
+
+.hero_container {
+    height: 300px;
+    /* background: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.hero_main_text{
+    font-size: 3em;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.tab_container{
+    height: 200px;
+    /* background: red; */
+}
+
+.tab_label{
+    font-size: 1.1em;
+}
+
+.tab_panel{
+    min-height: 50vh;
+    padding: 50px;
+}
+
+@media screen and (max-width: 768px){
+    .tab_panel{
+        padding: 20px;
+    }
+}
+
+.character_box{
+    min-height: 60vh;
+}
+
+.character_card_contain{
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid;
+    overflow: hidden;
+}
+
+.character_image{
+    height: 250px;
+    /* background: red; */
+}
+
+.character_image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.character_name{
+    padding: 10px 20px;
 }

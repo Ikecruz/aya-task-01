@@ -1,16 +1,16 @@
-import { MantineProvider } from '@mantine/core';
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { RecoilRoot } from 'recoil';
 
-import App from './App';
+import AppRoot from './Root';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
-  <StrictMode>
-    <MantineProvider theme={{ fontFamily: 'Pally' }}>
-      <App />
-    </MantineProvider>
-  </StrictMode>
+    <StrictMode>
+        <RecoilRoot>
+            <AppRoot />
+        </RecoilRoot>
+    </StrictMode>
 );
