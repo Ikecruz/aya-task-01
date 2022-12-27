@@ -20,6 +20,22 @@ const AllCharacter = () => {
                     <CharacterCard />
                 </Grid.Col>
 
+<Grid.Col sm={3}>
+    <CharacterCard />
+</Grid.Col>
+
+<Grid.Col sm={3}>
+    <CharacterCard />
+</Grid.Col>
+
+<Grid.Col sm={3}>
+    <CharacterCard />
+</Grid.Col>
+
+<Grid.Col sm={3}>
+    <CharacterCard />
+</Grid.Col>
+
             </Grid>
 
         </div>
