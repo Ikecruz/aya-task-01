@@ -1,4 +1,4 @@
-import { Grid, useMantineColorScheme, useMantineTheme } from "@mantine/core";
+import { Grid } from "@mantine/core";
 import axios from "axios";
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -8,12 +8,19 @@ import CharacterModal from "./characterModal";
 
 const AllCharacter = () => {
 
-    const theme = useMantineTheme();
+    const images = [
+        "https://i.pinimg.com/564x/8e/4a/ca/8e4acaebc29c36e9fe7fd4b2735179f5.jpg",
+        "https://i.pinimg.com/474x/df/67/f3/df67f33b922cbbb63fae756038ec6ade.jpg",
+        "https://i.pinimg.com/474x/42/ed/3f/42ed3f13e1473abe0599d4cb2ffd4db5.jpg",
+        "https://i.pinimg.com/474x/29/42/c7/2942c7f8536f3e46d4db7cadfcd8197d.jpg",
+        "https://i.pinimg.com/474x/4c/59/6f/4c596ff818e29edea16bb21b6c5ab482.jpg",
+        "https://i.pinimg.com/474x/35/c5/dc/35c5dcbfea030b75054f2f6aaefc67d5.jpg",
+        "https://i.pinimg.com/474x/e1/bf/e2/e1bfe286f1e1e0ddd7ba3d20a2c3422d.jpg"
+    ]
 
-    const { colorScheme } = useMantineColorScheme();
-    const dark = colorScheme === 'dark';
-
-    const [open, setOpen] = useState(false)
+    const getRandomImg = () => {
+        return images[Math.floor(Math.random() * images.length)]
+    }
 
     const [status, setStatus] = useState(null) 
 
@@ -32,8 +39,8 @@ const AllCharacter = () => {
             const { next, previous, results } = res.data
             setPagination({ next, previous })
 
-            console.log(results)
-            setCharacters(results)
+            setCharacters(results.map(res => ({...res, image: getRandomImg()})))
+            
             setStatus("success")
         })
         .catch(err => {
@@ -57,10 +64,9 @@ const AllCharacter = () => {
                 <Grid>
                     {
                         characters.map((character) => (
-                            <Grid.Col xs={6} sm={3}>
+                            <Grid.Col xs={6} sm={3} key={character.url} >
                                 <CharacterCard 
                                     character={character} 
-                                    key={character.url} 
                                     onClick={() => setSelectedCharacter(character)} 
                                 />
                             </Grid.Col>

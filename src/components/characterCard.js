@@ -34,7 +34,7 @@ const CharacterCard = ({ onClick, character }) => {
             layoutId={character.url}
         >
             <div className="character_image">
-                <img src="https://i.pinimg.com/564x/8e/4a/ca/8e4acaebc29c36e9fe7fd4b2735179f5.jpg" alt="" />
+                <img src={character.image} alt="" />
             </div>
             <div
                 className="character_name"

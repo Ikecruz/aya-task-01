@@ -51,7 +51,7 @@ const CharacterModal = ({ opened, close, layoutId }) => {
                 layoutId={layoutId}
             >
                 <div className="character_modal_image">
-                    <img src="https://i.pinimg.com/564x/8e/4a/ca/8e4acaebc29c36e9fe7fd4b2735179f5.jpg" alt="" />
+                    <img src={opened.image} alt="" />
                 </div>
                 <div className="character_modal_details">
                     <Group position="apart" mb="2px">
