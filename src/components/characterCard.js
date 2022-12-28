@@ -2,7 +2,7 @@ import { Text, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { motion } from "framer-motion";
 
-const CharacterCard = ({ onClick, layoutId }) => {
+const CharacterCard = ({ onClick, character }) => {
 
     const theme = useMantineTheme();
 
@@ -31,7 +31,7 @@ const CharacterCard = ({ onClick, layoutId }) => {
             whileTap="tap"
             variants={cardVariant}
             onClick={onClick}
-            layoutId={layoutId}
+            layoutId={character.url}
         >
             <div className="character_image">
                 <img src="https://i.pinimg.com/564x/8e/4a/ca/8e4acaebc29c36e9fe7fd4b2735179f5.jpg" alt="" />
@@ -42,7 +42,7 @@ const CharacterCard = ({ onClick, layoutId }) => {
                     background: theme.colors.indigo[8]
                 }}
             >
-                <Text weight={700} color="white">Luke Skywalker</Text>
+                <Text weight={700} color="white">{character.name}</Text>
             </div>
         </motion.div>
 

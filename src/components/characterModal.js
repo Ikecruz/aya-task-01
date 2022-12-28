@@ -55,7 +55,7 @@ const CharacterModal = ({ opened, close, layoutId }) => {
                 </div>
                 <div className="character_modal_details">
                     <Group position="apart" mb="2px">
-                        <Text weight={700} size="lg">Luke Skywalker</Text>
+                        <Text weight={700} size="lg">{opened.name}</Text>
                         <ActionIcon 
                             variant="outline"
                             size="lg"
@@ -73,12 +73,12 @@ const CharacterModal = ({ opened, close, layoutId }) => {
 
                     <Group spacing="10px" mb="5px">
                         <TfiRuler />
-                        <Text size="sm">177 CM</Text>
+                        <Text size="sm">{opened.height} CM</Text>
                     </Group>
 
                     <Group spacing="10px">
                         <BsGenderAmbiguous />
-                        <Text size="sm" transform="capitalize">Male</Text>
+                        <Text size="sm" transform="capitalize">{opened.gender}</Text>
                     </Group>
                 </div>
             </motion.div>

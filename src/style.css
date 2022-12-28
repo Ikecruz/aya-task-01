@@ -120,3 +120,8 @@ p {
 .character_modal_details{
     margin-top: 15px;
 }
+
+.card_skeleton{
+    border-radius: 10px;
+    overflow: hidden;
+}
