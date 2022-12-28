@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
 import { TfiRuler } from "react-icons/tfi"
-import { BsGenderAmbiguous } from "react-icons/bs"
+import { BsGenderAmbiguous, BsX } from "react-icons/bs"
 
 const CharacterModal = ({ opened, close, layoutId }) => {
 
@@ -21,7 +21,7 @@ const CharacterModal = ({ opened, close, layoutId }) => {
             setScrollLocked(true)
             return
         }
-        
+
         setScrollLocked(false)
 
     }, [opened])
@@ -33,7 +33,7 @@ const CharacterModal = ({ opened, close, layoutId }) => {
         <div className="character_modal">
 
             {/* OVERLAY */}
-            <div 
+            <div
                 style={{
                     background: theme.colors.indigo[3]
                 }}
@@ -42,7 +42,7 @@ const CharacterModal = ({ opened, close, layoutId }) => {
             />
 
             {/* ACTUAL MODAL */}
-            <motion.div 
+            <motion.div
                 className="character_modal_card"
                 style={{
                     background: dark ? theme.colors.dark[7] : theme.colors.gray[0],
@@ -56,7 +56,7 @@ const CharacterModal = ({ opened, close, layoutId }) => {
                 <div className="character_modal_details">
                     <Group position="apart" mb="2px">
                         <Text weight={700} size="lg">{opened.name}</Text>
-                        <ActionIcon 
+                        <ActionIcon
                             variant="outline"
                             size="lg"
                             radius="lg"
@@ -66,8 +66,8 @@ const CharacterModal = ({ opened, close, layoutId }) => {
                             color="indigo"
                             onClick={() => setLiked((c) => !c)}
                         >
-                            { liked && <AiFillHeart /> }
-                            { !liked && <AiOutlineHeart /> }
+                            {liked && <AiFillHeart />}
+                            {!liked && <AiOutlineHeart />}
                         </ActionIcon>
                     </Group>
 
@@ -80,6 +80,21 @@ const CharacterModal = ({ opened, close, layoutId }) => {
                         <BsGenderAmbiguous />
                         <Text size="sm" transform="capitalize">{opened.gender}</Text>
                     </Group>
+                </div>
+
+                <div className="character_modal_close_btn">
+                    <ActionIcon
+                        variant="outline"
+                        size="lg"
+                        radius="lg"
+                        style={{
+                            background: dark ? theme.colors.dark[5] : theme.colors.gray[2]
+                        }}
+                        color="indigo"
+                        onClick={() => close()}
+                    >
+                        <BsX />
+                    </ActionIcon>
                 </div>
             </motion.div>
         </div>
