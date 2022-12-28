@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, Tabs, Badge, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import SchemeToggler from './components/schemeToggler';
 import AllCharacter from './components/allCharacter';

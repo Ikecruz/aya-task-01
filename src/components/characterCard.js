@@ -2,7 +2,7 @@ import { Text, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { motion } from "framer-motion";
 
-const CharacterCard = () => {
+const CharacterCard = ({ onClick, layoutId }) => {
 
     const theme = useMantineTheme();
 
@@ -30,6 +30,8 @@ const CharacterCard = () => {
             whileHover={matches && 'hover'}
             whileTap="tap"
             variants={cardVariant}
+            onClick={onClick}
+            layoutId={layoutId}
         >
             <div className="character_image">
                 <img src="https://i.pinimg.com/564x/8e/4a/ca/8e4acaebc29c36e9fe7fd4b2735179f5.jpg" alt="" />
