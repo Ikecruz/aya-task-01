@@ -1,8 +1,9 @@
-import { Button, Grid, Group } from "@mantine/core";
+import { Button, Center, Grid, Group, Stack, Text } from "@mantine/core";
 import axios from "axios";
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { MdSignalWifiStatusbarConnectedNoInternet1 } from "react-icons/md";
 import CardSkeleton from "./cardSkeleton";
 import CharacterCard from "./characterCard";
 import CharacterModal from "./characterModal";
@@ -28,11 +29,11 @@ const AllCharacter = () => {
     ]
 
     const getRandomImg = (gender) => {
-        return gender === "male" ? maleImages[Math.floor(Math.random() * maleImages.length)] : 
-        femaleImages[Math.floor(Math.random() * femaleImages.length)]
+        return gender === "male" ? maleImages[Math.floor(Math.random() * maleImages.length)] :
+            femaleImages[Math.floor(Math.random() * femaleImages.length)]
     }
 
-    const [status, setStatus] = useState(null) 
+    const [status, setStatus] = useState(null)
 
     const [characters, setCharacters] = useState(null)
 
@@ -45,17 +46,17 @@ const AllCharacter = () => {
         setStatus('loading')
 
         axios.get(url)
-        .then(res => {
-            const { next, previous, results } = res.data
-            setPagination({ next, previous })
+            .then(res => {
+                const { next, previous, results } = res.data
+                setPagination({ next, previous })
 
-            setCharacters(results.map(res => ({...res ,image: getRandomImg(res.gender)})))
-            
-            setStatus("success")
-        })
-        .catch(err => {
-            setStatus('error')
-        })
+                setCharacters(results.map(res => ({ ...res, image: getRandomImg(res.gender) })))
+
+                setStatus("success")
+            })
+            .catch(err => {
+                setStatus('error')
+            })
 
     }
 
@@ -76,9 +77,9 @@ const AllCharacter = () => {
                         {
                             characters.map((character) => (
                                 <Grid.Col xs={6} sm={3} key={character.url} >
-                                    <CharacterCard 
-                                        character={character} 
-                                        onClick={() => setSelectedCharacter(character)} 
+                                    <CharacterCard
+                                        character={character}
+                                        onClick={() => setSelectedCharacter(character)}
                                     />
                                 </Grid.Col>
                             ))
@@ -108,7 +109,7 @@ const AllCharacter = () => {
             {
                 status === "loading" &&
                 <Grid>
-    
+
                     {
                         Array(8).fill(0).map((n, index) => (
                             <Grid.Col xs={6} key={index} sm={3}>
@@ -116,8 +117,21 @@ const AllCharacter = () => {
                             </Grid.Col>
                         ))
                     }
-    
+
                 </Grid>
+            }
+
+            {
+                status === "error" &&
+                <Center style={{ height: "400px" }}>
+                    <Stack align="center">
+                        <MdSignalWifiStatusbarConnectedNoInternet1 size="70px" />
+                        <Text>An error occured...Try again later</Text>
+                        <Button onClick={getCharacter}>
+                            Try again
+                        </Button>
+                    </Stack>
+                </Center>
             }
 
             <AnimatePresence initial={false}>
