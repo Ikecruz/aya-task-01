@@ -5,6 +5,7 @@ import AllCharacter from './components/allCharacter';
 import { favoritesCountState } from './stores/favourites';
 import { useRecoilValue } from 'recoil';
 import FavoriteCharacters from './components/favoriteCharacter';
+import Footer from './components/footer';
 
 export default function App() {
 
@@ -62,6 +63,9 @@ export default function App() {
                     <FavoriteCharacters />
                 </Tabs.Panel>
             </Tabs>
+
+            
+            <Footer />
         </div>
 
         <SchemeToggler />
