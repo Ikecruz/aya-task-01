@@ -31,7 +31,6 @@ const CharacterCard = ({ onClick, character }) => {
             whileTap="tap"
             variants={cardVariant}
             onClick={onClick}
-            layoutId={character.url}
         >
             <div className="character_image">
                 <img src={character.image} alt="" />

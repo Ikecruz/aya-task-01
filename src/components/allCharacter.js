@@ -49,7 +49,7 @@ const AllCharacter = () => {
             const { next, previous, results } = res.data
             setPagination({ next, previous })
 
-            setCharacters(results.map(res => ({...res, image: getRandomImg(res.gender)})))
+            setCharacters(results.map(res => ({...res ,image: getRandomImg(res.gender)})))
             
             setStatus("success")
         })
@@ -120,11 +120,10 @@ const AllCharacter = () => {
                 </Grid>
             }
 
-            <AnimatePresence>
+            <AnimatePresence initial={false}>
                 <CharacterModal
                     opened={selectedCharacter}
                     close={() => setSelectedCharacter(null)}
-                    layoutId={selectedCharacter?.url}
                 />
             </AnimatePresence>
 

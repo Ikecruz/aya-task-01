@@ -1,12 +1,14 @@
 import { ActionIcon, Group, Text, useMantineColorScheme, useMantineTheme } from "@mantine/core"
 import { useScrollLock } from "@mantine/hooks"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { motion } from "framer-motion"
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
 import { TfiRuler } from "react-icons/tfi"
 import { BsGenderAmbiguous, BsX } from "react-icons/bs"
+import { useRecoilState } from "recoil"
+import { containsItem, favoritesState, toggleLike } from "../stores/favourites"
 
-const CharacterModal = ({ opened, close, layoutId }) => {
+const CharacterModal = ({ opened, close }) => {
 
     const [, setScrollLocked] = useScrollLock()
 
@@ -16,17 +18,14 @@ const CharacterModal = ({ opened, close, layoutId }) => {
     const dark = colorScheme === 'dark';
 
     useEffect(() => {
-
         if (opened) {
             setScrollLocked(true)
             return
         }
-
         setScrollLocked(false)
-
     }, [opened])
 
-    const [liked, setLiked] = useState(true)
+    const [favorites, setFavorites] = useRecoilState(favoritesState)
 
     return opened ? <>
 
@@ -48,7 +47,6 @@ const CharacterModal = ({ opened, close, layoutId }) => {
                     background: dark ? theme.colors.dark[7] : theme.colors.gray[0],
                     borderColor: dark ? theme.colors.dark[4] : theme.colors.gray[3]
                 }}
-                layoutId={layoutId}
             >
                 <div className="character_modal_image">
                     <img src={opened.image} alt="" />
@@ -64,10 +62,10 @@ const CharacterModal = ({ opened, close, layoutId }) => {
                                 background: dark ? theme.colors.dark[5] : theme.colors.gray[2]
                             }}
                             color="indigo"
-                            onClick={() => setLiked((c) => !c)}
+                            onClick={() => toggleLike(opened, favorites, setFavorites)}
                         >
-                            {liked && <AiFillHeart />}
-                            {!liked && <AiOutlineHeart />}
+                            {containsItem(opened, favorites) && <AiFillHeart />}
+                            {!containsItem(opened, favorites) && <AiOutlineHeart />}
                         </ActionIcon>
                     </Group>
 

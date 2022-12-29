@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Text, Tabs, Badge, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import SchemeToggler from './components/schemeToggler';
 import AllCharacter from './components/allCharacter';
+import { favoritesCountState } from './stores/favourites';
+import { useRecoilValue } from 'recoil';
+import FavoriteCharacters from './components/favoriteCharacter';
 
 export default function App() {
 
@@ -9,6 +12,8 @@ export default function App() {
 
     const { colorScheme } = useMantineColorScheme();
     const dark = colorScheme === 'dark';
+
+    const favoriteCount = useRecoilValue(favoritesCountState)
 
     return <>
 
@@ -41,7 +46,7 @@ export default function App() {
                               size="xs"
                               p={0}
                             >
-                              6
+                              {favoriteCount}
                             </Badge>
                           }
                     >
@@ -54,7 +59,7 @@ export default function App() {
                 </Tabs.Panel>
 
                 <Tabs.Panel value="messages">
-                    Messages tab content
+                    <FavoriteCharacters />
                 </Tabs.Panel>
             </Tabs>
         </div>
