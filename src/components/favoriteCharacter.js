@@ -40,7 +40,7 @@ const FavoriteCharacters = () => {
                 <Center style={{ height: "400px" }}>
                     <Stack align="center">
                         <ImFileEmpty size="70px" />
-                        <Text>You currently have no items added to favourites</Text>
+                        <Text>You currently have no item(s) added to favourites</Text>
                     </Stack>
                 </Center>
             }
